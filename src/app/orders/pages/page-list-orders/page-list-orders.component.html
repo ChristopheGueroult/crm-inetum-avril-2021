@@ -1,1 +1,14 @@
-<p>page-list-orders works!</p>
+<app-template-fullwidth title="All orders" *ngIf="collection">
+  <app-table-light [titles]='headers'>
+    <tr *ngFor="let item of collection">
+      <td>{{ item.typePresta }}</td>
+      <td>{{ item.client }}</td>
+      <td>{{ item.nbJours }}</td>
+      <td>{{ item.tjmHt }}</td>
+      <td>{{ total(item.tjmHt, item.nbJours)}}</td>
+      <td>{{ total(item.tjmHt, item.nbJours, item.tva)}}</td>
+      <td>{{ item.state }}</td>
+    </tr>
+  </app-table-light>
+  <app-btn maRoute="add" label="Add an order"></app-btn>
+</app-template-fullwidth>
