@@ -1,7 +1,22 @@
 <header class="fixed-top">
-  header content
+
+
+  <span (click)="toggle()">
+    <ng-container *ngIf="open; then navOpen else navClose">open</ng-container>
+  </span>
+
+  <ng-template #navOpen>
+    <ng-content select=".tr-icon-open"></ng-content>
+  </ng-template>
+
+  <ng-template #navClose>
+    <ng-content select=".tr-icon-close"></ng-content>
+  </ng-template>
+
+  <!-- transclusion -->
+  <ng-content select=".tr-header"></ng-content>
 </header>
-<main>
+<main [ngClass]="{'close-aside': !open}">
 
   <div class="shadow position-fixed">
 
@@ -9,8 +24,8 @@
 
   <aside>
     <div class="scroller">
-
-      nav contents
+      <!-- transclusion -->
+      <ng-content select=".tr-nav"></ng-content>
     </div>
   </aside>
 
@@ -22,8 +37,8 @@
     </div>
 
     <footer>
-
-      footer contents
+      <!-- transclusion -->
+      <ng-content select=".tr-footer"></ng-content>
     </footer>
 
   </div>
