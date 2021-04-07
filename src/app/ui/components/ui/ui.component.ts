@@ -11,6 +11,7 @@ export class UiComponent implements OnInit {
 
   ngOnInit(): void {}
   public toggle(): void {
+
     this.open = !this.open;
   }
 }

@@ -2,7 +2,7 @@
 
 
   <span (click)="toggle()">
-    <ng-container *ngIf="open; then navOpen else navClose">open</ng-container>
+    <ng-container *ngIf="open; then navOpen else navClose"></ng-container>
   </span>
 
   <ng-template #navOpen>
@@ -32,7 +32,8 @@
   <div class="page">
 
     <div class="contents">
-      page contents
+
+      <ng-content select=".tr-content"></ng-content>
 
     </div>
 
