@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { StateOrder } from 'src/app/core/enums/state-order.enum';
 import { Order } from 'src/app/core/models/order';
 import { OrdersService } from '../../services/orders.service';
 
@@ -11,6 +12,7 @@ import { OrdersService } from '../../services/orders.service';
 export class PageListOrdersComponent implements OnInit {
   // public collection!: Order[];
   public collection$!: Observable<Order[]>;
+  public states = Object.values(StateOrder);
   public headers = [
     'Type',
     'Client',
@@ -28,4 +30,12 @@ export class PageListOrdersComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  changeState(item: Order, event: any): void {
+    const state = event.target.value;
+    this.ordersService.changeState(item, state).subscribe((data) => {
+      // traiter codes error response api or maj item.state côté front
+      item.state = data.state;
+    });
+  }
 }
