@@ -1,15 +1,35 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { Order } from 'src/app/core/models/order';
+import { OrdersService } from '../../services/orders.service';
 
 @Component({
   selector: 'app-page-edit-order',
   templateUrl: './page-edit-order.component.html',
-  styleUrls: ['./page-edit-order.component.scss']
+  styleUrls: ['./page-edit-order.component.scss'],
 })
 export class PageEditOrderComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  public item$!: Observable<Order>;
+  constructor(
+    private route: ActivatedRoute,
+    private ordersService: OrdersService,
+    private router: Router
+  ) {
+    this.item$ = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => {
+        return this.ordersService.getItemById(Number(params.get('id')));
+      })
+    );
   }
 
+  ngOnInit(): void {}
+
+  public action(item: Order): void {
+    this.ordersService.update(item).subscribe((data) => {
+      // si res api ok
+      this.router.navigate(['orders']);
+    });
+  }
 }

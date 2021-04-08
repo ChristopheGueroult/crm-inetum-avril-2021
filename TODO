@@ -1,2 +1,35 @@
-☐ PIPES AND ASYNC
+☐ Partie edit order
+  ☐ page list order html
+    ☐ afficher une colone 'action' avec un icon edit devant chaque ligne (td)
+    ☐ click sur icon edit => goToEdit(item)
+  ☐ page list order ts
+    ☐ coder fn goToEdit(item: Order) => redirection dans le ts vers la route orders/edit/1 (si id 1)
+  ☐ orders routing ts
+    ☐ route edit qui autorise un paramètre id dans l'url
+  ☐ page edit order ts
+    ☐ récupérer l'id dans l'url
+    ☐ appeler this.os.getItemById(id) et faire le subscribe
+    ☐ dans le subscribe on récupère la res de l'api (l'item qui correspond à l'id) et on initialise une propriété item avec cet obj
+  ☐ page edit order html
+    ☐ afficher form order component et on bind l'input init avec item quand il a une valeur
+    ☐ l'output submited appel une fn action($event)
+  ☐ page edit order ts
+    ☐ code la fn action(item: Order) => this.os.update(item).subscribe()
+    ☐ dans le subscribe, on redirige l'utilisateur vers la route orders
+
+
+    ☐ TP DELETE
+
+    ☐ page list order html
+      ☐ ajouter un icon delete dans le meme td que l'icon edit
+      ☐ ajouter un (click)="delete(item.id)"
+
+    ☐ page list order ts
+      ☐ declarer la fn delete(id: number) {appeler fn delete sur service OrdersService et subscribe()}
+
+    ☐ orders service ts
+      ☐ declarer la fn delete(id: number) {appel http.delete(....)}
+
+    ☐ page list order ts
+      ☐ dans le subscribe de la fn delete, maj collection$ avec this.ordersService.collection
 
