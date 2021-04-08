@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { StateOrder } from 'src/app/core/enums/state-order.enum';
 import { Order } from 'src/app/core/models/order';
 import { environment } from 'src/environments/environment';
@@ -13,7 +14,13 @@ export class OrdersService {
   private collection$!: Observable<Order[]>;
   private urlApi = environment.urlApi;
   constructor(private http: HttpClient) {
-    this.collection = this.http.get<Order[]>(`${this.urlApi}/orders`);
+    this.collection = this.http.get<Order[]>(`${this.urlApi}/orders`).pipe(
+      map((tab) => {
+        return tab.map((obj) => {
+          return new Order(obj);
+        });
+      })
+    );
   }
 
   // get collection
@@ -28,9 +35,9 @@ export class OrdersService {
 
   // change state item
   public changeState(item: Order, state: StateOrder): Observable<Order> {
-    const obj = {...item}
+    const obj = { ...item };
     obj.state = state;
-    return this.update(obj);
+    return this.update(new Order(obj));
   }
 
   // update item in collection

@@ -9,4 +9,5 @@ export interface OrderI {
   client: string;
   comment: string;
   id: number;
+  total(val: number, coef: number, tva?: number): number;
 }
