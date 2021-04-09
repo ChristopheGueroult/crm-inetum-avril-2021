@@ -45,30 +45,10 @@
       "nbJours": 20,
       "tva": 20,
       "state": "OPTION",
-      "typePresta": "Coaching",
+      "typePresta": "Coaching2",
       "client": "YouAnd",
       "comment": "gracias mucho !",
       "id": 5
-    },
-    {
-      "tjmHt": 1200,
-      "nbJours": 100,
-      "tva": 20,
-      "state": "OPTION",
-      "typePresta": "formation",
-      "client": "Capgemini",
-      "comment": "Merci Capgemini pour les 120k",
-      "id": 6
-    },
-    {
-      "tjmHt": 1200,
-      "nbJours": 1,
-      "tva": 20,
-      "state": "OPTION",
-      "typePresta": "aa",
-      "client": "test",
-      "comment": "fghsgfgr",
-      "id": 7
     }
   ],
   "clients": [

@@ -43,4 +43,10 @@ export class PageListOrdersComponent implements OnInit {
       item.state = data.state;
     });
   }
+
+  public delete(id: number): void {
+    this.ordersService.delete(id).subscribe((data) => {
+      console.log(data);
+    });
+  }
 }
