@@ -1,10 +1,10 @@
 <app-template-fullwidth title="All orders" *ngIf="collection$ | async as collection">
   <!-- {{ collection | json }} -->
   <app-table-light [titles]='headers'>
-    <tr *ngFor="let item of collection">
+    <tr *ngFor="let item of collection" (click)="selectItem(item)">
       <td>
-        <app-icon-edit (click)="goToEdit(item)"></app-icon-edit>
-        <app-icon-delete (click)="delete(item.id)"></app-icon-delete>
+        <app-icon-edit (click)="$event.stopPropagation(); goToEdit(item)"></app-icon-edit>
+        <app-icon-delete (click)="$event.stopPropagation(); delete(item.id)"></app-icon-delete>
       </td>
       <td>{{ item.typePresta }}</td>
       <td>{{ item.client | uppercase }}</td>
@@ -20,4 +20,15 @@
     </tr>
   </app-table-light>
   <app-btn maRoute="add" label="Add an order"></app-btn>
+
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="detail" routerLinkActive="active">Detail</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="comment" routerLinkActive="active">Comment</a>
+    </li>
+  </ul>
+  <router-outlet></router-outlet>
+  <!-- router will add detail or comment component -->
 </app-template-fullwidth>

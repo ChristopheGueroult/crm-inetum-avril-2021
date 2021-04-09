@@ -12,12 +12,13 @@ import { environment } from 'src/environments/environment';
 export class OrdersService {
   // private collection
   private collection$ = new BehaviorSubject<Order[]>([]);
+  private selectedItem$ = new BehaviorSubject<Order>(new Order());
   private urlApi = environment.urlApi;
   constructor(private http: HttpClient) {
     this.refreshCollection();
   }
 
-  private refreshCollection(): void {
+  private refreshCollection(id?: number): void {
     this.http
       .get<Order[]>(`${this.urlApi}/orders`)
       .pipe(
@@ -28,8 +29,23 @@ export class OrdersService {
         })
       )
       .subscribe((data) => {
+        if (id) {
+          this.getItemById(id).subscribe((obj) => this.selectedItem$.next(obj));
+        } else {
+          this.selectedItem$.next(data[0]);
+        }
+        this.selectedItem$.next(data[0]);
         this.collection$.next(data);
       });
+  }
+
+  // maj selectedItem
+  public updateSelectedItem(item: Order): void {
+    this.selectedItem$.next(item);
+  }
+
+  public get selectedItem(): BehaviorSubject<Order> {
+    return this.selectedItem$;
   }
 
   // get collection
@@ -53,7 +69,7 @@ export class OrdersService {
   public update(item: Order): Observable<Order> {
     return this.http.put<Order>(`${this.urlApi}/orders/${item.id}`, item).pipe(
       tap((data) => {
-        this.refreshCollection();
+        this.refreshCollection(data.id);
       })
     );
   }
@@ -62,7 +78,7 @@ export class OrdersService {
   public add(item: Order): Observable<Order> {
     return this.http.post<Order>(`${this.urlApi}/orders`, item).pipe(
       tap((data) => {
-        this.refreshCollection();
+        this.refreshCollection(data.id);
       })
     );
   }

@@ -1,0 +1,132 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>crm-inetum-avril documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	      <link rel="stylesheet" href="./styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">crm-inetum-avril documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<p>☐ Partie edit order
+  ☐ page list order html
+    ☐ afficher une colone &#39;action&#39; avec un icon edit devant chaque ligne (td)
+    ☐ click sur icon edit =&gt; goToEdit(item)
+  ☐ page list order ts
+    ☐ coder fn goToEdit(item: Order) =&gt; redirection dans le ts vers la route orders/edit/1 (si id 1)
+  ☐ orders routing ts
+    ☐ route edit qui autorise un paramètre id dans l&#39;url
+  ☐ page edit order ts
+    ☐ récupérer l&#39;id dans l&#39;url
+    ☐ appeler this.os.getItemById(id) et faire le subscribe
+    ☐ dans le subscribe on récupère la res de l&#39;api (l&#39;item qui correspond à l&#39;id) et on initialise une propriété item avec cet obj
+  ☐ page edit order html
+    ☐ afficher form order component et on bind l&#39;input init avec item quand il a une valeur
+    ☐ l&#39;output submited appel une fn action($event)
+  ☐ page edit order ts
+    ☐ code la fn action(item: Order) =&gt; this.os.update(item).subscribe()
+    ☐ dans le subscribe, on redirige l&#39;utilisateur vers la route orders</p>
+<div><pre class="line-numbers"><code class="language-none">☐ TP DELETE
+
+☐ page list order html
+  ☐ ajouter un icon delete dans le meme td que l&#39;icon edit
+  ☐ ajouter un (click)=&quot;delete(item.id)&quot;
+
+☐ page list order ts
+  ☐ declarer la fn delete(id: number) {appeler fn delete sur service OrdersService et subscribe()}
+
+☐ orders service ts
+  ☐ declarer la fn delete(id: number) {appel http.delete(....)}
+
+☐ page list order ts
+  ☐ dans le subscribe de la fn delete, maj collection$ avec this.ordersService.collection</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'todo.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="./js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="./js/menu-wc.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

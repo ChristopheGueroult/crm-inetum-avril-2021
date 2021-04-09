@@ -49,4 +49,8 @@ export class PageListOrdersComponent implements OnInit {
       console.log(data);
     });
   }
+
+  public selectItem(item: Order): void {
+    this.ordersService.updateSelectedItem(item);
+  }
 }
